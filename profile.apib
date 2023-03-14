@@ -1,0 +1,835 @@
+FORMAT: 1A
+HOST: http://localhost:5000
+
+# Profile
+# Group Doctor
+
+## IndexDoctorProfiles [/api/v1/doctors]
+
+### IndexDoctorProfiles [GET]
+
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "firstNameTH": "นพ สมหมาย",
+                    "lastNameTH" : "ใจดี",
+                    "firstNameEN" : "Sommai",
+                    "lastNameTH" : "jaidee",
+                },
+                {
+                    "firstNameTH": "นพ สมชาย",
+                    "lastNameTH" : "เก่งดี",
+                    "firstNameEN" : "Somchai",
+                    "lastNameTH" : "kengdee",
+                
+                }
+
+
+
+## ShowDoctorProfile [/api/v1/doctors/{doctorID}]
+
+### ShowDoctorProfile [GET]
+
++ Parameters
+
+    + doctorID: 1 (int) 
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "firstNameTH": "นพ สมหมาย",
+                    "lastNameTH" : "ใจดี",
+                    "firstNameEN" : "Sommai",
+                    "lastNameTH" : "jaidee",
+                }
+
+
+# Group Doctor Slots
+## ShowDoctorSlots [/api/v1/doctors/{doctorID}/doctorslots]
+
+### ShowDoctorSlots [GET]
++ Parameters
+
+    + doctorID: 1 (int) 
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "2023-03-14T08:15:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby"
+                    "room" : "ห้อง 7",
+                    "description": "" ,
+                    "Doctor": {
+                                "id": 1,
+                                "firstNameTH": "นพ สมหมาย",
+                                "lastNameTH" : "ใจดี",
+                                "firstNameEN" : "Sommai",
+                                "lastNameTH" : "jaidee",
+                            },            
+                },
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00", 
+                    "isSlotIAvailable" : false,    
+                    "slotSatau" : "พักผ่อน",
+                    "departments" : ""
+                    "room" : "",
+                    "description": ""  ,
+                    "Doctor": {
+                                "id": 1,
+                                "firstNameTH": "นพ สมหมาย",
+                                "lastNameTH" : "ใจดี",
+                                "firstNameEN" : "Sommai",
+                                "lastNameTH" : "jaidee",
+                            },
+                },
+
+                 {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:30:00",
+                    "slotEndDateTime" : "2023-03-14T08:45:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby"
+                    "room" : "",
+                    "description": "" ,
+                    "Doctor": {
+                                "id": 1,
+                                "firstNameTH": "นพ สมหมาย",
+                                "lastNameTH" : "ใจดี",
+                                "firstNameEN" : "Sommai",
+                                "lastNameTH" : "jaidee",
+                            },
+                },
+                 {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:30:00",
+                    "slotEndDateTime" : "2023-03-14T08:45:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby"
+                    "room" : "ห้อง 7",
+                    "description": "" ,
+                    "Doctor": {
+                                "id": 1,
+                                "firstNameTH": "นพ สมหมาย",
+                                "lastNameTH" : "ใจดี",
+                                "firstNameEN" : "Sommai",
+                                "lastNameTH" : "jaidee",
+                            },
+                }
+
+
+## FilteringDoctorSlot [/api/v1/doctors/{doctorID}/doctorslots{?slotStartDateTime}&{slotEndDateTime}]
+
+### FilteringDoctorSlot [GET]
+
++ Parameters
+
+    + slotStartDateTime (Datetime, optional) 
+        + Default: `2023-03-14T08:00:00`
+    + slotEndDateTime (Datetime, optional) 
+        + Default: `2023-03-14T08:15:00`
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "2023-03-14T08:15:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby"
+                    "room" : "ห้อง 7",
+                    "description": "" ,
+                    "Doctor": {
+                                "id": 1,
+                                "firstNameTH": "นพ สมหมาย",
+                                "lastNameTH" : "ใจดี",
+                                "firstNameEN" : "Sommai",
+                                "lastNameTH" : "jaidee",
+                            }       
+                }
+
+
+## CreateDoctorSlot [/api/v1/doctors/doctorslots]
+
+### CreateDoctorSlot [POST]
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "2023-03-14T08:15:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby",
+                    "room" : "ห้อง 7",
+                    "description": ""
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "$$", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby",
+                    "room" : "ห้อง 7",
+                    "description": ""
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid slotEndDateTime",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": "",
+                    "slotDate": "",
+                    "dayOfWeek" : "",
+                    "slotStartDateTime" : "",
+                    "slotEndDateTime" : "", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "",
+                    "departments" : "",
+                    "room" : "",
+                    "description": ""
+                }
+
++ Response 500 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 500,
+                    "error": "Internal Server Error",
+                    "message": "Internal Server Error",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+## UpdateDoctorSlot [/api/v1/doctors/1/doctorslots]
+
+### UpdateSlot [PUT]
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "2023-03-14T08:15:00", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby",
+                    "room" : "ห้อง 7",
+                    "description": ""
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": 1,
+                    "slotDate": "2023-03-14",
+                    "dayOfWeek" : "TU",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "$$", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "ออกตรวจ",
+                    "departments" : "well baby",
+                    "room" : "ห้อง 7",
+                    "description": ""
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid slotEndDateTime",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "doctorlD": "",
+                    "slotDate": "",
+                    "dayOfWeek" : "",
+                    "slotStartDateTime" : "",
+                    "slotEndDateTime" : "", 
+                    "isSlotIAvailable" : true,    
+                    "slotSatau" : "",
+                    "departments" : "",
+                    "room" : "",
+                    "description": ""
+                }
+
++ Response 500 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 500,
+                    "error": "Internal Server Error",
+                    "message": "Internal Server Error",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+
+# Group Appointments
+
+## ShowDoctorAppointments [/api/v1/doctors/{doctorID}/appointments]
+
+### ShowDoctorAppointments [GET]
+
++ Parameters
+
+    + doctorID: 1 (int) 
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "appointmentsID": 1 ,
+                    "userHN" : "39-22-000001",
+                    "appointmentsType": "appointment",
+                    "department": "Well baby",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:00:00",
+                    "slotEndDateTime" : "2023-03-14T08:15:00",
+                    "descripton":"",
+                    "appointmentStatus" : "",
+                    "doctorID" : 1
+                },
+                {
+                    "appointmentsID": 2 ,
+                    "userHN" : "39-22-000001",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" : "",
+                    "doctor
+                    ID" : 1
+
+                }
+
+## SearchDoctorAppointmentsUserHN [/api/v1/doctors/{doctorID}/appointments{?userHN}&{?slotDate}]
+
+### SearchDoctorAppointmentsUserHN [GET]
++ Parameters
+
+    + userHN : "3922000001" (String)
+    + doctorID: 1 (int)
+    + slotDate : "2023/03/14"
+
+
++ Response 200 (application/json)
+
+    + Body
+
+               {
+                    "appointmentsID": 2 ,
+                    "userHN" : "39-22-000001",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" :"ยกเลิก",
+                    "doctorID" : 1
+                }
+
+
+## CreateDoctorAppointments [/api/v1/doctors/appointments]
+
+### CreateDoctorAppointments [POST]
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "appointmentsID": 2 ,
+                    "userHN" : "39-22-000001",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" :"ยกเลิก",
+                    "doctorID" : 1
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                    "appointmentsID": 2 ,
+                    "userHN" : "-",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" :"ยกเลิก",
+                    "doctorID" : 1
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid userHN",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+## UpateDoctorAppointments [/api/v1/doctors/{doctorID}/appointments/{appointmentsID}]
+
+### UpdateDoctorAppointments [PUT]
+
++ Parameters
+    + appointmentsID: 1 (int)
+    + doctorID: 1 (int)
+
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "appointmentsID": 2 ,
+                    "userHN" : "39-22-000001",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" :"ยกเลิก",
+                    "doctorID" : 1
+                }
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                    "appointmentsID": 2 ,
+                    "userHN" : "-",
+                    "appointmentsType": "appointment",
+                    "department": "walk in",
+                    "room": "7",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "descripton":"",
+                    "appointmentStatus" :"ยกเลิก",
+                    "doctorID" : 1
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid userHN",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+## UpateDoctorAppointmentsStatus [/api/v1/doctors/{doctorID}/appointments/{appointmentsID}]
+
+### UpdateDoctorAppointmentsStatus [PATCH]
+
++ Parameters
+    + appointmentsID: 1 (int)
+    + doctorID: 1 (int)
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "appointmentStatus" :"ยกเลิก"
+                }
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+
+# Group QueueManagement
+
+## ShowDoctorQueueManagement [/api/v1/doctors/{doctorID}/queuemanagements]
+
+### ShowDoctorQueueManagement [GET]
+
++ Parameters
+    + doctorID: 1 (int) 
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "queuemanagementID": 1,
+                    "appointmentsID" : 1,
+                    "userHN" : "39-22-000001",
+                    "queueNumber" : "",
+                    "queueStatus" : "",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "",
+                    "checkout": "",
+                    "doctorID" : 1,
+                    "description" : "",
+                  
+                },
+                 {
+                    "queuemanagementID": 2,
+                    "appointmentsID" : 2,
+                    "userHN" : "39-22-000002",
+                    "queueNumber" : "SS-A01",
+                    "queueStatus" : "รับคิว",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "08:15:00",
+                    "checkout": "08:50:00",
+                    "doctorID" : 1,
+                    "description" : "",
+                  
+                }
+
+
+## CreateDoctorQueueManagement [/api/v1/doctors/queuemanagements]
+
+### CreateDoctorQueueManagement [POST]
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "queuemanagementID": 1,
+                    "appointmentsID" : 1,
+                    "userHN" : "39-22-000001",
+                    "queueNumber" : "",
+                    "queueStatus" : "",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "",
+                    "checkout": "",
+                    "doctorID" : 1,
+                    "description" : ""
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                   "queuemanagementID": 1,
+                    "appointmentsID" : 1,
+                    "userHN" : "%%",
+                    "queueNumber" : "",
+                    "queueStatus" : "",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "",
+                    "checkout": "",
+                    "doctorID" : 1,
+                    "description" : "",
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid userHN",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+## UpdateDoctorQueueManagement [/api/v1/doctors/{doctorID}/queuemanagements/{queuemanagementID}]
+
+### UpdateDoctorQueueManagement [PUT]
++ Parameters
+    + doctorID: 1 (int)
+    + queuemanagementID:1 (int)
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    "queuemanagementID": 1,
+                    "appointmentsID" : 1,
+                    "userHN" : "39-22-000001",
+                    "queueNumber" : "",
+                    "queueStatus" : "",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "",
+                    "checkout": "",
+                    "doctorID" : 1,
+                    "description" : ""
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                   "queuemanagementID": 1,
+                    "appointmentsID" : 1,
+                    "userHN" : "%%",
+                    "queueNumber" : "",
+                    "queueStatus" : "",
+                    "AppointmentType":"appointment",
+                    "slotDate" : "2023-03-14",
+                    "slotStartDateTime" : "2023-03-14T08:15:00",
+                    "slotEndDateTime" : "2023-03-14T08:30:00",
+                    "department": "Well baby",
+                    "room": "7",
+                    "checkin": "",
+                    "checkout": "",
+                    "doctorID" : 1,
+                    "description" : ""
+                }
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid userHN",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
+
+
+
+
+## UpdateDoctorQueueManagementStatus [/api/v1/doctors/{doctorID}/queuemanagements/{queuemanagementID}]
+
+### UpdateDoctorQueueManagementStatus [PATCH]
++ Parameters
+    + doctorID: 1 (int)
+    + queuemanagementID:1 (int)
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                    "queueStatus" : "พบเเพทย์"
+                }
+
++ Response 201 (application/json)
+
+    + Body
+
+                {
+                    "message": "success",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
+
++ Request (application/json)
+
+    + Body
+
+                {
+                    
+                    "queueStatus" : ""
+                }
+                
+
++ Response 400 (application/json)
+
+    + Body
+
+                {    
+                    "statusCode" : 400,
+                    "error": "Bad Request",
+                    "message": "Invalid queueStatus",
+                    "timestamp": 2020-09-30T10:20:30+00:00 
+                }
